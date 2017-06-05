@@ -14,11 +14,11 @@ describe(Category, () => {
   });
 
   it('displays the correct name', () => {
-    const name = 'Aperitifs';
+    const categoryName = 'Sauces & Dressings';
     const component = shallow(
-      <Category name="Aperitifs" />
+      <Category name="Sauces & Dressings" />
     );
-    expect(component.text()).toContain(name);
+    expect(component.text()).toContain(categoryName);
   });
 });
 

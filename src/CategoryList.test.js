@@ -12,4 +12,13 @@ describe(CategoryList, () => {
       ).toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('displays the correct name', () => {
+    const categoryName = 'Kitchenware';
+    const component = shallow(
+      <CategoryList />
+    );
+    expect(component.text()).toContain(categoryName);
+  });
 });
+

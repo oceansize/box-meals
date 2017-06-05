@@ -3,13 +3,15 @@ import './ProductShowcase.css';
 import CategoryList from './CategoryList';
 
 class ProductShowcase extends Component {
+
   render() {
     return (
       <div className="product-showcase">
-        <CategoryList />
+      <CategoryList />
       </div>
     );
   }
 }
 
 export default ProductShowcase;
+
