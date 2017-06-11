@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './CategoryList.css'
 import Category from './Category';
+import { dataFetch } from './api/data-fetch';
 
 class CategoryList extends Component {
 
@@ -9,26 +10,15 @@ class CategoryList extends Component {
     this.state = { categories: [] };
   };
 
-  addCategories (newCategory) {
-    this.setState({ categories: [...this.state.categories, newCategory]});
-  };
-
   componentWillMount () {
-    let url = "https://api.gousto.co.uk/products/v2.0/categories";
-
-    fetch(url)
-      .then(data => data.json() )
-      .then(res => res.data.forEach(element => {
-        this.addCategories(element.title);
-      }))
-      .catch((err) => {
-        console.log('much error===', err);
-      });
+    let endpoint = "categories"
+    dataFetch(endpoint)
+      .then(items => this.setState({ categories : items}))
   };
 
   renderCategories () {
-    return this.state.categories.map(name => (
-      <Category key={name} name={name} />
+    return this.state.categories.map(category => (
+      <Category key={category.id} name={category.title} />
     ));
   };
 

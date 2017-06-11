@@ -1,8 +1,9 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
-
+import { shallow } from 'enzyme';
 import CategoryList from './Categorylist';
+const getData = require('./api/data-fetch');
+jest.mock('./api/request');
 
 describe(CategoryList, () => {
 
@@ -13,12 +14,12 @@ describe(CategoryList, () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('displays the correct name', () => {
-    const categoryName = 'Kitchenware';
-    const component = shallow(
-      <CategoryList />
-    );
-    expect(component.text()).toContain(categoryName);
-  });
+  it('should load categories from API', () => {
+    return getData.dataFetch("categories")
+    .then(items => {
+      expect(items).toBeDefined()
+      expect(items[0].title).toEqual('Mocked Drinks Cabinet')
+    })
+  })
 });
 

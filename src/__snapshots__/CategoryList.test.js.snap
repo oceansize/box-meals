@@ -1,5 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`class CategoryList extends /* istanbul ignore next */_react.Component {
+
+  constructor(props) {/* istanbul ignore next */++cov_3bdxopdgj.f[0];++cov_3bdxopdgj.s[0];
+    super(props); /* istanbul ignore next */++cov_3bdxopdgj.s[1];
+    this.state = { categories: [] };
+  }
+
+  componentWillMount() {/* istanbul ignore next */++cov_3bdxopdgj.f[1];
+    let endpoint = /* istanbul ignore next */(++cov_3bdxopdgj.s[2], "categories"); /* istanbul ignore next */++cov_3bdxopdgj.s[3];
+    /* istanbul ignore next */(0, _dataFetch.dataFetch)(endpoint).
+    then(items => {/* istanbul ignore next */++cov_3bdxopdgj.f[2];++cov_3bdxopdgj.s[4];return this.setState({ categories: items });});
+  }
+
+  renderCategories() {/* istanbul ignore next */++cov_3bdxopdgj.f[3];++cov_3bdxopdgj.s[5];
+    return this.state.categories.map(category =>
+    {/* istanbul ignore next */++cov_3bdxopdgj.f[4];++cov_3bdxopdgj.s[6];return (/* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */_Category2.default, /* istanbul ignore next */{ key: category.id, name: category.title, __source: { fileName: _jsxFileName, lineNumber: 21 }, __self: this }));});
+
+  }
+
+  render() {/* istanbul ignore next */++cov_3bdxopdgj.f[5];++cov_3bdxopdgj.s[7];
+    return (
+      /* istanbul ignore next */_react2.default.createElement( /* istanbul ignore next */'ul', /* istanbul ignore next */{ className: 'category-list', __source: { fileName: _jsxFileName, lineNumber: 27 }, __self: this },
+        this.renderCategories()));
+
+
+  }} matches the component snapshot 1`] = `
+<ul
+  className="category-list"
+/>
+`;
+
 exports[`class CategoryList extends _react.Component {
 
   constructor(props) {
@@ -7,32 +38,21 @@ exports[`class CategoryList extends _react.Component {
     this.state = { categories: [] };
   }
 
-  addCategories(newCategory) {
-    this.setState({ categories: [...this.state.categories, newCategory] });
-  }
-
   componentWillMount() {
-    let url = "https://api.gousto.co.uk/products/v2.0/categories";
-
-    fetch(url).
-    then(data => data.json()).
-    then(res => res.data.forEach(element => {
-      this.addCategories(element.title);
-    })).
-    catch(err => {
-      console.log('much error===', err);
-    });
+    let endpoint = "categories";
+    (0, _dataFetch.dataFetch)(endpoint).
+    then(items => this.setState({ categories: items }));
   }
 
   renderCategories() {
-    return this.state.categories.map(name =>
-    _react2.default.createElement(_Category2.default, { key: name, name: name, __source: { fileName: _jsxFileName, lineNumber: 31 }, __self: this }));
+    return this.state.categories.map(category =>
+    _react2.default.createElement(_Category2.default, { key: category.id, name: category.title, __source: { fileName: _jsxFileName, lineNumber: 21 }, __self: this }));
 
   }
 
   render() {
     return (
-      _react2.default.createElement('ul', { className: 'category-list', __source: { fileName: _jsxFileName, lineNumber: 37 }, __self: this },
+      _react2.default.createElement('ul', { className: 'category-list', __source: { fileName: _jsxFileName, lineNumber: 27 }, __self: this },
         this.renderCategories()));
 
 
